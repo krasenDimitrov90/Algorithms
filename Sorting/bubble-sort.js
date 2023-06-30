@@ -2,7 +2,9 @@ function swap(arr, idx1, idx2) {
     [arr[idx1], arr[idx2]] = [arr[idx2], arr[idx1]];
 }
 
-function sort(arr) {
+// Big O(n^2)
+
+function bubbleSort(arr) {
     let noSwaps = true;
     let count = 0;
     for (let i = arr.length - 1; i >= 0; i--) {
@@ -19,6 +21,6 @@ function sort(arr) {
 }
 
 let nums = [1,2,3,4,5];
-sort(nums);
+bubbleSort(nums);
 
 console.log(nums)
