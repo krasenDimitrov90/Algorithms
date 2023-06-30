@@ -6,7 +6,6 @@ function swap(arr, idx1, idx2) {
 
 function bubbleSort(arr) {
     let noSwaps = true;
-    let count = 0;
     for (let i = arr.length - 1; i >= 0; i--) {
         noSwaps = true;
         for (let j = 0; j < i; j++) {
@@ -14,13 +13,12 @@ function bubbleSort(arr) {
                 swap(arr, j, j + 1);
                 noSwaps = false;
             }
-            count++
         }
         if (noSwaps) break;
     }
 }
 
-let nums = [1,2,3,4,5];
+let nums = [9,1,8,3,5,7,6,4,2];
 bubbleSort(nums);
 
 console.log(nums)
