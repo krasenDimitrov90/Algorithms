@@ -16,6 +16,9 @@ function findPivotIndex(arr, start = 0, end = arr.length - 1) {
     return swapIdx;
 }
 
+// Big O(n log n)
+// Worst case O(n^2)
+
 function quickSort(arr, left = 0, right = arr.length - 1) {
     if (left < right) {
         let pivotIdx = findPivotIndex(arr, left, right);
