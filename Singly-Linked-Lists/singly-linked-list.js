@@ -85,8 +85,46 @@ class LinkedList {
         return false;
     }
 
+    insert(idx, val) {
+        let newNode = new Node(val);
+        if (idx === this.length) {
+            this.push(newNode);
+            return true;
+        } else if (idx === 0) {
+            this.unShift(newNode);
+            return true;
+        }
+
+        if (idx > this.length) return false;
+
+        let foundNode = this.get(idx - 1);
+        newNode.next = foundNode.next;
+        foundNode.next = newNode;
+        this.length++;
+        return true;
+    }
+
+    remove(idx) {
+        // 1   2   3   4   5
+        if (idx < 0 || idx >= this.length) return undefined;
+        if (idx === this.length - 1) return this.pop();
+        if (idx === 0) return this.shift(); 
+
+        let prevNode = this.get(idx - 1);
+        let nodeToRemove = prevNode.next
+        prevNode.next = nodeToRemove.next;
+        this.length--;
+
+        return nodeToRemove;
+    }
+
     printList() {
-        console.log(this);
+        let current = this.head;
+        while (current) {
+            console.log(current);
+            current = current.next;
+        }
+        console.log('\n');
     }
 }
 
@@ -97,5 +135,8 @@ linkedList.push('how');
 
 linkedList.printList();
 
-linkedList.set(2, 'Hello');
+linkedList.insert(1, 'Test');
+linkedList.printList();
+
+linkedList.remove(5);
 linkedList.printList();
