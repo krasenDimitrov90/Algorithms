@@ -61,8 +61,8 @@ class DoublyLinkedList {
 
     unShift(val) {
         if (this.length === 0) return this.push(val);
-        
-        let newNode = new Node(val); 
+
+        let newNode = new Node(val);
 
         this.head.prev = newNode;
         newNode.next = this.head;
@@ -70,6 +70,28 @@ class DoublyLinkedList {
 
         this.length++;
         return newNode;
+    }
+
+    get(idx) {
+        if (idx < 0 || idx >= this.length) return undefined;
+        let current = null;
+        if (idx <= this.length / 2) {
+            current = this.head;
+            while (idx > 0) {
+                current = current.next;
+                idx--;
+            }
+        } else {
+            current = this.tail;
+            while (idx < this.length - 1) {
+                current = current.prev;
+                idx++;
+            }
+        }
+
+        
+
+        return current;
     }
 
     printList() {
@@ -84,9 +106,15 @@ class DoublyLinkedList {
 }
 
 let doublyLinkedList = new DoublyLinkedList();
-// doublyLinkedList.push(1);
-// doublyLinkedList.push(2);
-// doublyLinkedList.push(3);
+doublyLinkedList.push(1);
+doublyLinkedList.push(2);
+doublyLinkedList.push(3);
 console.log(doublyLinkedList.unShift(4));
 
-doublyLinkedList.printList();
+console.log(doublyLinkedList.get(0))
+console.log(doublyLinkedList.get(1))
+console.log(doublyLinkedList.get(2))
+console.log(doublyLinkedList.get(3))
+console.log(doublyLinkedList.get(4))
+
+// doublyLinkedList.printList();
