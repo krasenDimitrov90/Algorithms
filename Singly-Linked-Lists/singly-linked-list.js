@@ -54,10 +54,26 @@ class LinkedList {
         this.length++;
         if (this.length === 0) {
             this.head = newNode;
+            this.tail = this.head;
         } else {
             newNode.next = this.head;
             this.head = newNode;
         }
+        return this;
+    }
+
+    get(idx) {
+        if (this.length === 0) return undefined;
+        let count = 0;
+        let currentNode = this.head;
+        while (currentNode && count <= idx) {
+            if (count === idx) {
+                return currentNode;
+            }
+            currentNode = currentNode.next;
+            count++;
+        }
+        return undefined;
     }
 
     printList() {
@@ -73,27 +89,9 @@ class LinkedList {
 
 const linkedList = new LinkedList();
 linkedList.push('Hi');
-// linkedList.push('there');
-// linkedList.push('how');
+linkedList.push('there');
+linkedList.push('how');
 
 linkedList.printList();
 
-linkedList.unShift('Hellooo');
-console.log('\n')
-linkedList.printList();
-
-// linkedList.pop();
-// console.log('\n')
-// linkedList.printList();
-
-// linkedList.pop();
-// console.log('\n')
-// linkedList.printList();
-
-// linkedList.pop();
-// console.log('\n')
-// linkedList.printList();
-
-linkedList.shift();
-console.log('\n')
-linkedList.printList();
+console.log(linkedList.get(-1))
