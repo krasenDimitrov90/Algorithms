@@ -19,6 +19,7 @@ function mostDigets(arr) {
     return maxDigets;
 }
 
+// Big O(nk)
 
 function radixSort(arr) {
     let maxDigets = mostDigets(arr);
