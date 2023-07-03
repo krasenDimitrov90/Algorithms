@@ -76,14 +76,17 @@ class LinkedList {
         return undefined;
     }
 
+    set(idx, val) {
+        let foundNode = this.get(idx);
+        if (foundNode) {
+            foundNode.val = val;
+            return true;
+        }
+        return false;
+    }
+
     printList() {
         console.log(this);
-        // let current = this.head;
-        // while (current) {
-        //     console.log({ current: current?.val, next: current?.next?.val })
-        //     current = current.next;
-        //     if (!current) break;
-        // }
     }
 }
 
@@ -94,4 +97,5 @@ linkedList.push('how');
 
 linkedList.printList();
 
-console.log(linkedList.get(-1))
+linkedList.set(2, 'Hello');
+linkedList.printList();
