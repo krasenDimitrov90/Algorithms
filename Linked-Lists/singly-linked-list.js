@@ -105,7 +105,7 @@ class LinkedList {
     }
 
     remove(idx) {
-        // 1   2   3   4   5
+        
         if (idx < 0 || idx >= this.length) return undefined;
         if (idx === this.length - 1) return this.pop();
         if (idx === 0) return this.shift(); 
@@ -116,6 +116,24 @@ class LinkedList {
         this.length--;
 
         return nodeToRemove;
+    }
+
+    reverse() {
+        //     1      2         3           4     5
+        // prevNode        forwardNode           tail
+        //     5  2 3 4  1
+        let node = this.head;
+        this.head = this.tail;
+        this.tail = node;
+        let prev = null;
+        let next = node.next;
+
+        for (let i = 0; i < this.length; i++) {
+            next = node.next;
+            node.next = prev;
+            prev = node;
+            node = next;
+        }
     }
 
     printList() {
@@ -135,8 +153,11 @@ linkedList.push('how');
 
 linkedList.printList();
 
-linkedList.insert(1, 'Test');
+linkedList.reverse();
 linkedList.printList();
 
-linkedList.remove(5);
-linkedList.printList();
+// linkedList.insert(1, 'Test');
+// linkedList.printList();
+
+// linkedList.remove(5);
+// linkedList.printList();
