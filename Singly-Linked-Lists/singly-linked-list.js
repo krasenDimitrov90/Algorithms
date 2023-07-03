@@ -25,48 +25,75 @@ class LinkedList {
     }
 
     pop() {
-        if (this.length <= 1) {
-            this.length = 0;
-            this.head = null;
+        if (!this.head) return undefined;
+        let current = this.head;
+        let newTail = current;
+        while (current.next) {
+            newTail = current;
+            current = current.next;
+        }
+        this.tail = newTail;
+        this.tail.next = null;
+        this.length--;
+        return current;
+    }
+
+    shift() {
+        if (!this.head) return undefined;
+        let current = this.head;
+        this.head = current.next;
+        this.length--;
+        if (this.length === 0) {
             this.tail = null;
+        }
+        return current;
+    }
+
+    unShift(val) {
+        let newNode = new Node(val);
+        this.length++;
+        if (this.length === 0) {
+            this.head = newNode;
         } else {
-            let current = this.head;
-            while (current) {
-                if (current.next === this.tail) {
-                    current.next = null;
-                    this.tail = current;
-                    this.length--;
-                    break;
-                }
-                current = current.next;
-            }
+            newNode.next = this.head;
+            this.head = newNode;
         }
     }
 
     printList() {
-        let current = this.head;
-        while (current) {
-            console.log({ current: current?.val, next: current?.next?.val })
-            current = current.next;
-            if (!current) break;
-        }
+        console.log(this);
+        // let current = this.head;
+        // while (current) {
+        //     console.log({ current: current?.val, next: current?.next?.val })
+        //     current = current.next;
+        //     if (!current) break;
+        // }
     }
 }
 
 const linkedList = new LinkedList();
 linkedList.push('Hi');
-linkedList.push('there');
-linkedList.push('how');
+// linkedList.push('there');
+// linkedList.push('how');
 
 linkedList.printList();
-linkedList.pop();
+
+linkedList.unShift('Hellooo');
 console.log('\n')
 linkedList.printList();
 
-linkedList.pop();
-console.log('\n')
-linkedList.printList();
+// linkedList.pop();
+// console.log('\n')
+// linkedList.printList();
 
-linkedList.pop();
+// linkedList.pop();
+// console.log('\n')
+// linkedList.printList();
+
+// linkedList.pop();
+// console.log('\n')
+// linkedList.printList();
+
+linkedList.shift();
 console.log('\n')
 linkedList.printList();
