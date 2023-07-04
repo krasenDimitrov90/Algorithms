@@ -15,7 +15,6 @@ class DoublyLinkedList {
 
     push(val) {
         let newNode = new Node(val);
-        this.length++;
         if (!this.head) {
             this.head = newNode;
             this.tail = newNode;
@@ -24,6 +23,8 @@ class DoublyLinkedList {
             newNode.prev = this.tail;
             this.tail = newNode;
         }
+
+        this.length++;
         return newNode;
     }
 
@@ -40,8 +41,8 @@ class DoublyLinkedList {
             this.tail.next = null;
             popedNode.prev = null;
         }
-        this.length--;
 
+        this.length--;
         return popedNode;
     }
 
@@ -54,8 +55,8 @@ class DoublyLinkedList {
         this.head.prev = null;
 
         shiftedNode.next = null;
-        this.length--;
 
+        this.length--;
         return shiftedNode;
     }
 
@@ -89,9 +90,52 @@ class DoublyLinkedList {
             }
         }
 
-        
-
         return current;
+    }
+
+    set(idx, val) {
+        let foundedNode = this.get(idx);
+
+        if (foundedNode) {
+            foundedNode.val = val;
+            return true;
+        }
+
+        return false;
+    }
+
+    insert(idx, val) {
+        // The "!!" operator transform the result to boolean
+        if (idx === this.length) return !!this.push(val);
+        if (idx === 0) return !!this.unShift(val);
+        if (idx > this.length || idx < 0) return false;
+
+        let newNode = new Node(val);
+        let beforeNode = this.get(idx - 1);
+        let afterNode = beforeNode.next;
+
+        beforeNode.next = newNode, newNode.prev = beforeNode;
+        newNode.next = afterNode, afterNode.prev = newNode;
+
+        this.length++;
+        return true;
+    }
+
+    remove(idx) {
+        if (idx < 0 || idx >= this.length) return undefined;
+        if (idx === 0) return this.shift();
+        if (idx === this.length - 1) return this.pop();
+
+        let foundedNode = this.get(idx - 1);
+        let removedNode = foundedNode.next;
+        let afterNextNode = removedNode.next;
+        foundedNode.next = foundedNode.next.next;
+        afterNextNode.prev = foundedNode;
+
+        this.length--;
+        removedNode.next = null;
+        removedNode.prev = null;
+        return removedNode;
     }
 
     printList() {
@@ -111,10 +155,12 @@ doublyLinkedList.push(2);
 doublyLinkedList.push(3);
 console.log(doublyLinkedList.unShift(4));
 
+console.log(doublyLinkedList.remove(3));
+
 console.log(doublyLinkedList.get(0))
 console.log(doublyLinkedList.get(1))
 console.log(doublyLinkedList.get(2))
 console.log(doublyLinkedList.get(3))
 console.log(doublyLinkedList.get(4))
 
-// doublyLinkedList.printList();
+doublyLinkedList.printList();

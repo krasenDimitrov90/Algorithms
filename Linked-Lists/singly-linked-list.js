@@ -88,14 +88,14 @@ class LinkedList {
     insert(idx, val) {
         let newNode = new Node(val);
         if (idx === this.length) {
-            this.push(newNode);
+            this.push(val);
             return true;
         } else if (idx === 0) {
-            this.unShift(newNode);
+            this.unShift(val);
             return true;
         }
 
-        if (idx > this.length) return false;
+        if (idx > this.length || idx < 0) return false;
 
         let foundNode = this.get(idx - 1);
         newNode.next = foundNode.next;
