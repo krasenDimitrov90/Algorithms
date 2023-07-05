@@ -1,0 +1,29 @@
+Binary trees are trees that may have up to 2 children
+The small children are on the left , the bigest are on the right
+
+                  40
+                /    \
+               /      \
+              /        \
+            20          50
+           /   \        / \
+          15    30    45   60
+                            \
+                             70
+
+Every parent has AT MOST 2 children
+Every node to the left of the parent is always less then the parent
+Every node to the right of the parent is always greater then the parent
+
+                  40
+                /    \
+               8      15   
+              /         \
+             3           20
+            / \
+           4   6 NOT VALID TREE, 4 is greater then 3
+
+
+                  40
+                /  | \
+               8   5   15  NOT VALID TREE, It has 3 children 
