@@ -1,3 +1,14 @@
+Big O
+    insertion O(log n)
+    searching O(log n)
+But it is not guaranteed. If for some reason the tree looks like this
+1
+  15
+    23
+     32
+    the Big O would be O(n), becouse we only have values on the one side of the tree.
+
+
 Binary trees are trees that may have up to 2 children
 The small children are on the left , the bigest are on the right
 
