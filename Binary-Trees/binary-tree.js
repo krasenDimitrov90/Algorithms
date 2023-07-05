@@ -22,30 +22,24 @@ class BinarySearchTree {
         let newNodeHasAdded = false;
 
         while (!newNodeHasAdded) {
+            if (currentNode === val) return undefined;
             let leftNode = currentNode.left;
             let rightNode = currentNode.right;
 
-            if (leftNode && rightNode) {
-                currentNode = currentNode.val > newNode.val
-                    ? leftNode : rightNode;
-                continue;
-            }
-
-            if (!leftNode && !rightNode) {
-                if (currentNode.val > val) {
+            if (currentNode.val > val) {
+                if (!leftNode) {
                     currentNode.left = newNode;
+                    return newNode;
                 } else {
-                    currentNode.rigth = newNode;
+                    currentNode = leftNode;
                 }
-                return newNode;
-            }
-
-            if (leftNode && !rightNode) {
-                currentNode.right = newNode;
-                return newNode;
-            } else if (!leftNode && rightNode) {
-                currentNode.left = newNode;
-                return newNode;
+            } else if (currentNode.val < val) {
+                if (!rightNode) {
+                    currentNode.right = newNode;
+                    return newNode;
+                } else {
+                    currentNode = rightNode;
+                }
             }
         }
     }
@@ -59,3 +53,7 @@ tree.insertOne(29);
 tree.insertOne(50);
 tree.insertOne(91);
 tree.insertOne(72);
+tree.insertOne(99);
+tree.insertOne(32);
+tree.insertOne(11);
+tree.insertOne(12);
