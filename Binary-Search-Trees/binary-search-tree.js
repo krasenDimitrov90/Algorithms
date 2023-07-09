@@ -66,24 +66,24 @@ class BinarySearchTree {
     }
 
     // Teachers Solution for find
-    find(val) {
-        if (!this.root) return undefined
-        let currentNode = this.root;
-        let found = false;
+    // find(val) {
+    //     if (!this.root) return undefined
+    //     let currentNode = this.root;
+    //     let found = false;
 
-        while (currentNode && !found) {
-            if (currentNode.val > val) {
-                currentNode = currentNode.left;
-            } else if (currentNode.val < val) {
-                currentNode = currentNode.right;
-            } else {
-                found = true;
-            }
-        }
+    //     while (currentNode && !found) {
+    //         if (currentNode.val > val) {
+    //             currentNode = currentNode.left;
+    //         } else if (currentNode.val < val) {
+    //             currentNode = currentNode.right;
+    //         } else {
+    //             found = true;
+    //         }
+    //     }
 
-        if (!currentNode) return undefined;
-        return currentNode;
-    }
+    //     if (!currentNode) return undefined;
+    //     return currentNode;
+    // }
 }
 
 let tree = new BinarySearchTree();
