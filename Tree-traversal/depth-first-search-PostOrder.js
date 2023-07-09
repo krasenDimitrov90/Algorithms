@@ -65,7 +65,7 @@ class BinarySearchTree {
         }
     }
 
-    // Depth First Search - PreOrder
+    // Depth First Search - PostOrder
     DFS() {
         if (!this.root) return [];
         let current = this.root;
@@ -73,9 +73,10 @@ class BinarySearchTree {
         let visited = [];
 
         const searchInNode = (node) => {
-            visited.push(node.val);
             if (node.left) searchInNode(node.left);
             if (node.right) searchInNode(node.right);
+
+            visited.push(node.val);
         };
 
         searchInNode(current);
@@ -87,7 +88,7 @@ class BinarySearchTree {
 
 //           10
 //         6    15
-//       3   8     10
+//       3   8     20
 
 let tree = new BinarySearchTree();
 tree.insert(10);
@@ -96,4 +97,4 @@ tree.insert(15);
 tree.insert(3);
 tree.insert(8);
 tree.insert(20);
-console.log(tree.DFS());  //  [10, 6, 3, 8, 15, 20]
+console.log(tree.DFS());  //  [3, 8, 6, 20, 15, 10]
