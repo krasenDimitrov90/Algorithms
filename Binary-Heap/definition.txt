@@ -1,0 +1,46 @@
+A binary heap is a heap, i.e, a tree which obeys the property that the root of any tree
+is greater than or equal to (Max Binary Heap), or smaller than or equal to (Min Binary Heap) 
+all its children (heap property). 
+The primary use of such a data structure is to implement a priority queue.
+
+Min Binary Heap
+      10                      
+     /   \                
+    20    100       
+   /                      
+  30     
+
+Max Binary Heap
+      100                      
+     /   \                
+    20    30       
+   /                      
+  10            
+
+To represent a Binary Heap as an array, and to search in it,
+we have this:
+    - left child index is ( 2n + 1 ) - n is parent index       
+    - right child index is ( 2n + 1 ) - n is parent index
+    - parent index is (n - 1 / 2) - n is child index
+
+    Example for the Max Binary Heap from above
+    [100, 20, 30, 10]    
+       0   1   2   3   
+
+When insert a value the way to place it to the corect index is like this:
+    First we add the value to the end of the array
+    The next proccess is called Bubble Up
+         We find the parent (n-1/2) 
+         If the parent is less the value we swap them
+         We continue this proccess till we find the corect index for the value
+
+When extracting the root we have to reorder the array
+so can any children go to the correct indexes
+    First extract the value in index [0]
+    Then we Dubble Down
+        Move the last value to be the first value (arr[0] === arr.pop())
+        Then compare it with its two new children (the arr[1] and arr[2])
+        Swap it with the index, where the value is greater
+            ( if we have arr[0] = 12, arr[1] = 15, arr[2] = 20 We swap arr[0] and arr[2] )
+            (so "20" becomes a parent for "15" and "12" )
+        If there is no greater values stop
