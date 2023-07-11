@@ -1,3 +1,9 @@
+Big O
+    Insertion O(log n)
+    Removal O(log n)
+    Seacring O(n)
+It is very eficient for insertion and removal, not for searching though.
+
 A binary heap is a heap, i.e, a tree which obeys the property that the root of any tree
 is greater than or equal to (Max Binary Heap), or smaller than or equal to (Min Binary Heap) 
 all its children (heap property). 
