@@ -1,0 +1,19 @@
+Hash Table is like an object. We can imagine array with a length,
+and key value pairs ("black", '#000000')
+                        key     value
+Then we use a hash function to hash the key, wich returns an index
+which we use to store the pair in the array.
+Because more then one key may return the same index, we store
+the pairs in the a nested array coresponding to that index
+
+[0  1  2  3]
+0 - empty
+1 - empty
+2 - [[key,value], [key, value]]
+3 - [[key, value]]
+
+Definition from internet
+A hash table uses a hash function to compute an index, also called a hash code, 
+into an array of buckets or slots, from which the desired value can be found. 
+During lookup, the key is hashed and the resulting hash indicates where the 
+corresponding value is stored. Hash table. Type. Unordered associative array.

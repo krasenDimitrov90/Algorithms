@@ -3,9 +3,12 @@ Big O
     searching O(log n)
 But it is not guaranteed. If for some reason the tree looks like this
 1
+ \
   15
-    23
-     32
+    \
+     23
+      \
+       32
     the Big O would be O(n), becouse we only have values on the one side of the tree.
 
 
