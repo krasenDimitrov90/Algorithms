@@ -1,6 +1,14 @@
-Hash Table is like an object. We can imagine array with a length,
-and key value pairs ("black", '#000000')
-                        key     value
+The Big O
+            On average
+    Insertion - O(n)
+    Deletion - O(n)
+    Searching - O(n)
+It depends on how good the hash function is. A good hash function 
+distribute the key value pairs more evenly in the array.
+
+Hash Table is like an object. We can imagine array with a fixed length,
+and key value pairs  - example ("black", '#000000')
+                                   key     value
 Then we use a hash function to hash the key, wich returns an index
 which we use to store the pair in the array.
 Because more then one key may return the same index, we store
