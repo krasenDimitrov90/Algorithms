@@ -27,6 +27,18 @@ class Graph {
         this.adjacencyList[v1] = this.adjacencyList[v1].filter(v => v !== v2);
         this.adjacencyList[v2] = this.adjacencyList[v2].filter(v => v !== v1);
     }
+
+    removeVertex(v1) {
+        if (!this.adjacencyList[v1]) return;
+
+        for (let v2 of this.adjacencyList[v1]) {
+            this.adjacencyList[v2] = this.adjacencyList[v2].filter(v => v !== v1);
+        }
+
+        // deleting the vertex is not a common thing
+        // more often we want to keep the vertex and only remove the conections (edges)
+        delete this.adjacencyList[v1];
+    }
 }
 
 const g = new Graph();
@@ -39,6 +51,6 @@ g.addEdge('Tokyo', 'Yambol');
 g.addEdge('First', 'Second');
 
 console.log(g);
-g.removeEdge('Tokyo', 'Yambol');
+g.removeVertex('Yambol');
 console.log(g);
 
