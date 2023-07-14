@@ -39,18 +39,47 @@ class Graph {
         // more often we want to keep the vertex and only remove the conections (edges)
         delete this.adjacencyList[v1];
     }
+
+    // Depth First Traversal
+    depthFirstRecursive(vertex, visited = [], result = []) {
+        if (!this.adjacencyList[vertex]) return undefined;
+        if (this.adjacencyList[vertex].length === 0) return;
+
+        visited.push(vertex);
+        result.push(vertex);
+
+        for (let v of this.adjacencyList[vertex]) {
+            if (!visited.includes(v)) {
+                this.depthFirstRecursive(v, visited, result);
+            }
+        }
+
+        return result;
+    }
 }
 
 const g = new Graph();
-g.addVertex('Tokyo');
-g.addVertex('Dalas');
-g.addVertex('NYC');
+g.addVertex('A');
+g.addVertex('B');
+g.addVertex('C');
+g.addVertex('D');
+g.addVertex('E');
+g.addVertex('F');
 
-g.addEdge('Tokyo', 'Dalas');
-g.addEdge('Tokyo', 'Yambol');
-g.addEdge('First', 'Second');
+g.addEdge('A', 'B');
+g.addEdge('A', 'C');
+g.addEdge('B', 'D');
+g.addEdge('C', 'E');
+g.addEdge('D', 'E');
+g.addEdge('D', 'F');
+g.addEdge('E', 'F');
 
-console.log(g);
-g.removeVertex('Yambol');
-console.log(g);
+console.log(g.DFT('A'));
 
+//          A
+//        /   \
+//       B     C
+//       |     |
+//       D --- E
+//        \   /
+//          F
