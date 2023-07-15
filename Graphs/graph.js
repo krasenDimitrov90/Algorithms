@@ -59,21 +59,43 @@ class Graph {
 
     depthFirstIterative(vertex) {
         const result = [];
-        const stack = [];
+        const stack = [vertex];
         const visited = {};
 
-        stack.push(vertex);
+        visited[vertex] = true;
         let currentVertex;
 
-        while(stack.length > 0) {
+        while (stack.length > 0) {
             currentVertex = stack.pop();
-            if (result.includes(currentVertex)) continue;
-
             result.push(currentVertex);
+
             for (let neighbor of this.adjacencyList[currentVertex]) {
                 if (!visited[neighbor]) {
                     visited[neighbor] = true;
                     stack.push(neighbor);
+                }
+            }
+        }
+
+        return result;
+    }
+
+    breadFirst(vertex) {
+        const result = [];
+        const queue = [vertex];
+        const visited = {};
+
+        visited[vertex] = true;
+        let currentVertex;
+
+        while (queue.length) {
+            currentVertex = queue.shift();
+            result.push(currentVertex);
+
+            for (let neighbor of this.adjacencyList[currentVertex]) {
+                if (!visited[neighbor]) {
+                    visited[neighbor] = true;
+                    queue.push(neighbor);
                 }
             }
         }
@@ -100,6 +122,7 @@ g.addEdge('E', 'F');
 
 console.log(g.depthFirstRecursive('A')); // ['A', 'B', 'D', 'E', 'C', 'F']
 console.log(g.depthFirstIterative('A')); // ['A', 'C', 'E', 'F', 'D', 'B']
+console.log(g.breadFirst('A')); // ['A', 'B', 'C', 'D', 'E', 'F']
 
 //          A
 //        /   \
