@@ -1,0 +1,46 @@
+             4
+        A---------B
+     2 /           \ 3
+      /   2      3  \ 
+     C-------D-------E
+     |        \     / 
+     |       1 \   / 1
+     |          \ /
+     |___________F 
+         4    
+
+
+distances = {            
+    A: 0,      
+    B: Infinity,      
+    C: Infinity,      
+    D: Infinity,      
+    E: Infinity,      
+    F: Infinity      
+};      
+
+priorityQueue = {
+    values: [
+        {node: A, priority: 0},
+        {node: B, priority: Infinity},
+        {node: C, priority: Infinity},
+        {node: D, priority: Infinity},
+        {node: E, priority: Infinity},
+        {node: F, priority: Infinity},
+    ]
+};
+
+paths = {            
+    A: null,      
+    B: null,      
+    C: null,      
+    D: null,      
+    E: null,      
+    F: null      
+}; 
+
+While looping , if found a path that is shorter then the current 
+in the distances object, update the distances object key with the 
+calculated distance , then update the path object key, with the 
+path that is coresponding to that distance, then enque in the priority 
+queue the node with the new distance
